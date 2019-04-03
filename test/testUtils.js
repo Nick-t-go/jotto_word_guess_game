@@ -1,4 +1,4 @@
-
+import checkPropTypes from 'check-prop-types';
 
 /**
   * @param {ShallowWrapper} wrapper  - Enzyme shallow wrapper to search withing
@@ -10,3 +10,11 @@ export const findByTestAttr = (wrapper, val) => {
 }
 
 
+export const checkProps = (component, conformingProps) => {
+	const propError = checkPropTypes(
+		component.propTypes,
+		conformingProps,
+		'prop',
+		component.name);
+	expect(propError).toBeUndefined()
+}
